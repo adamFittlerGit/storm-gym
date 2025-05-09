@@ -1,16 +1,26 @@
-import WorkoutList from '@/components/WorkoutList';
-import CreateWorkoutButton from '@/components/CreateWorkoutButton';
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
 
 export default function Home() {
   return (
-    <div className="min-h-screen p-8">
-      <main className="max-w-4xl mx-auto">
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-2xl font-bold">My Workouts</h1>
-          <CreateWorkoutButton />
+    <main className="min-h-screen bg-gray-900 text-white">
+      <div className="container mx-auto px-4 py-16">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold mb-6 text-purple-400">
+            Workout Tracker
+          </h1>
+          <p className="text-gray-300 mb-8">
+            Track your fitness journey with our simple and effective workout tracker
+          </p>
+          <div className="space-x-4">
+            <Link href="/login">
+              <Button className="bg-purple-600 hover:bg-purple-700">
+                Get Started
+              </Button>
+            </Link>
+          </div>
         </div>
-        <WorkoutList />
-      </main>
-    </div>
-  );
+      </div>
+    </main>
+  )
 }
