@@ -6,14 +6,31 @@ import { Input } from '@/components/ui/input'
 import { useRouter } from 'next/navigation'
 
 export default function Login() {
-  const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const router = useRouter()
 
   const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault()
-    // Add authentication logic here
-    router.push('/workouts')
+    e.preventDefault()  
+    
+    try {
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      })
+
+      if (response.ok) {
+        router.push('/workouts')
+      } else {
+        alert('Invalid credentials')
+      }
+    } catch (error) {
+      console.error('Login error:', error)
+      alert('An error occurred during login')
+    }
   }
 
   return (
@@ -23,10 +40,10 @@ export default function Login() {
         <form onSubmit={handleLogin} className="space-y-4">
           <div>
             <Input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              type="username"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               className="bg-gray-700 text-white"
             />
           </div>

@@ -48,8 +48,11 @@ export default function Workouts() {
                       {workout.exercises.join(', ')}
                     </p>
                   </div>
-                  <Button variant="outline" className="text-purple-400 border-purple-400">
-                    View Details
+                  <Button 
+                    variant="default" 
+                    className="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-6 py-2 transform transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/20"
+                  >
+                    Start Workout →
                   </Button>
                 </div>
               </Link>

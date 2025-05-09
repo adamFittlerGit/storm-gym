@@ -3,6 +3,7 @@
 import { useParams, useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { useState, useEffect } from 'react'
+import { ArrowLeft } from 'lucide-react'
 
 interface ExerciseSet {
   weight: number;
@@ -82,6 +83,15 @@ export default function WorkoutDetails() {
   return (
     <div className="min-h-screen bg-gray-900 p-8">
       <div className="container mx-auto max-w-2xl">
+        <Button 
+          onClick={() => router.push('/workouts')}
+          variant="ghost" 
+          className="mb-4 text-gray-400 flex items-center"
+        >
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Back to Workouts
+        </Button>
+        
         <div className="bg-gray-800 rounded-lg p-8">
           <h1 className="text-3xl font-bold text-purple-400 mb-4">{workout.name}</h1>
           <p className="text-gray-400 mb-6">{workout.date}</p>
