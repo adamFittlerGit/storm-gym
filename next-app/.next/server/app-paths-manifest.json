@@ -1,0 +1,8 @@
+{
+  "/api/auth/login/route": "app/api/auth/login/route.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/login/page": "app/login/page.js",
+  "/workouts/[workout]/page": "app/workouts/[workout]/page.js",
+  "/workouts/new/page": "app/workouts/new/page.js",
+  "/workouts/page": "app/workouts/page.js"
+}

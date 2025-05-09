@@ -23,7 +23,25 @@ export default function NewWorkout() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     // Add API call to save workout
-    router.push('/workouts')
+    try {
+      const response = await fetch('/api/workouts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: workoutName,
+          exercises: exercises,
+        }),
+      });
+      if (response.ok) {
+        router.push('/workouts')
+      } else {
+        console.error('Failed to create workout')
+      }
+    } catch (error) {
+      console.error('Error creating workout:', error)
+    }
   }
 
   return (

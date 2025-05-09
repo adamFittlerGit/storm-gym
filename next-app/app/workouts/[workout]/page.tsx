@@ -44,7 +44,18 @@ export default function WorkoutDetails() {
 
   const handleDelete = async () => {
     // Add API call to delete workout
-    router.push('/workouts')
+    try {
+      const response = await fetch(`/api/workouts/${params.workout}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        router.push('/workouts');
+      } else {
+        console.error('Failed to delete workout');
+      }
+    } catch (error) {
+      console.error('Error deleting workout:', error);
+    }
   }
 
   const handleSave = async () => {
