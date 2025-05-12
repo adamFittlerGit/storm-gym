@@ -2,7 +2,7 @@ import { Pool } from 'pg';
 
 // Create a new pool of PostgreSQL connections
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: 'postgresql://postgres:postgres@localhost:5432/storm_gym',
   ssl: process.env.NODE_ENV === 'production' 
     ? { rejectUnauthorized: false } 
     : false,
